@@ -721,22 +721,23 @@ Be conversational and enthusiastic. Keep the intro text brief, then provide the 
                 console.error('AI Error:', error);
                 
                 // More specific error messages
-                let errorMessage = 'Sorry, I encountered an error with the AI service. ';
+                let errorMessage = '⚠️ AI Error: ';
                 
                 if (error.message.includes('401')) {
-                    errorMessage += 'Your API key appears to be invalid. Please check it and try again.';
+                    errorMessage += 'Invalid API key. Please check your key at console.anthropic.com and re-enter it.';
                     // Clear invalid key
                     localStorage.removeItem('claudeApiKey');
-                    addMessage(errorMessage, true);
-                    addMessage('Click here to re-enter your API key or continue in basic mode.', true);
-                    return;
                 } else if (error.message.includes('429')) {
                     errorMessage += 'Rate limit reached. Please wait a moment and try again.';
                 } else if (error.message.includes('overloaded')) {
-                    errorMessage += 'The AI service is currently busy. Let me help with my basic knowledge instead.';
+                    errorMessage += 'The AI service is currently busy. Try again in a moment.';
+                } else if (error.message.includes('Failed to fetch') || error.message.includes('NetworkError')) {
+                    errorMessage += 'Network connection issue. Check your internet connection.';
                 } else {
-                    errorMessage += 'Let me try to help with my basic knowledge instead.';
+                    errorMessage += error.message || 'Unknown error occurred.';
                 }
+                
+                errorMessage += '\n\nUsing basic movie database instead...';
                 
                 addMessage(errorMessage, true);
                 
