@@ -506,7 +506,11 @@
         <!-- API Key Modal -->
         <div class="settings-modal" id="apiKeyModal" onclick="closeApiKeyModalOnOutsideClick(event)">
             <div class="settings-content" onclick="event.stopPropagation()">
-                <h2 style="color: var(--light-purple); margin-bottom: 1rem;">🔑 Enter API Key</h2>
+                <h2 style="color: var(--light-purple); margin-bottom: 1rem;">🔑 API Key Management</h2>
+                
+                <div style="padding: 1rem; background: rgba(157, 78, 221, 0.1); border-radius: 8px; margin-bottom: 1rem; text-align: center;">
+                    <span id="modalStatusText" style="color: var(--text-dim);">Status: No key entered</span>
+                </div>
                 
                 <div style="margin-bottom: 1rem;">
                     <label style="color: var(--text-dim); display: block; margin-bottom: 0.5rem;">Claude API Key</label>
@@ -522,6 +526,7 @@
                 </div>
                 
                 <button onclick="saveApiKeyFromModal()" class="api-button" style="width: 100%; margin-bottom: 0.5rem;">Save & Start</button>
+                <button onclick="removeApiKeyFromModal()" class="api-button" style="width: 100%; background: rgba(255, 107, 107, 0.3); margin-bottom: 0.5rem;">Remove Key</button>
                 <button onclick="closeApiKeyModal()" class="close-button" style="width: 100%;">Cancel</button>
             </div>
         </div>
@@ -593,11 +598,18 @@
         window.onload = function() {
             const storedKey = localStorage.getItem('claudeApiKey');
             
+            console.log('Page loaded. Checking for stored API key...');
+            console.log('Stored key exists:', !!storedKey);
+            
             if (storedKey) {
+                console.log('Found stored key, length:', storedKey.length);
+                console.log('Key starts with sk-ant-:', storedKey.startsWith('sk-ant-'));
+                
                 apiKey = storedKey;
                 updateApiKeyStatus(true);
                 showChatInterface();
             } else {
+                console.log('No stored key found');
                 updateApiKeyStatus(false);
             }
         };
@@ -609,9 +621,21 @@
             }
         }
         
+        function updateModalStatus() {
+            const statusText = document.getElementById('modalStatusText');
+            if (statusText) {
+                if (apiKey) {
+                    statusText.innerHTML = '<span style="color: var(--gold);">✅ API key is currently saved</span>';
+                } else {
+                    statusText.innerHTML = '<span style="color: #ff6b6b;">❌ No API key saved</span>';
+                }
+            }
+        }
+        
         function openApiKeyModal() {
             const modal = document.getElementById('apiKeyModal');
             modal.style.display = 'flex';
+            updateModalStatus();
         }
         
         function closeApiKeyModal() {
@@ -625,6 +649,16 @@
         function closeApiKeyModalOnOutsideClick(event) {
             if (event.target.id === 'apiKeyModal') {
                 closeApiKeyModal();
+            }
+        }
+        
+        function removeApiKeyFromModal() {
+            if (confirm('Are you sure you want to remove your API key?')) {
+                apiKey = null;
+                localStorage.removeItem('claudeApiKey');
+                updateApiKeyStatus(false);
+                updateModalStatus();
+                alert('API key removed. Please enter a new key to continue using CineMatch.');
             }
         }
         
@@ -732,6 +766,18 @@
             const sendButton = document.getElementById('sendButton');
             
             try {
+                // Check if we have an API key
+                if (!apiKey) {
+                    throw new Error('No API key found. Please click the "❌ API Key" button in the top right to enter your key.');
+                }
+                
+                // Validate API key format
+                if (!apiKey.startsWith('sk-ant-')) {
+                    throw new Error('Invalid API key format. Please enter a valid key starting with "sk-ant-"');
+                }
+                
+                console.log('Making API request with key starting with:', apiKey.substring(0, 10) + '...');
+                
                 // Add user message to conversation history
                 conversationHistory.push({
                     role: "user",
@@ -794,6 +840,7 @@ Be conversational and enthusiastic. Keep the intro text brief, then provide the 
                 try {
                     response = await fetch('https://api.anthropic.com/v1/messages', {
                         method: 'POST',
+                        mode: 'cors',
                         headers: {
                             'Content-Type': 'application/json',
                             'x-api-key': apiKey,
@@ -804,7 +851,8 @@ Be conversational and enthusiastic. Keep the intro text brief, then provide the 
                     });
                 } catch (fetchError) {
                     console.error('Network Error:', fetchError);
-                    throw new Error('Network connection failed. Please check your internet connection and try again.');
+                    console.error('Error details:', fetchError.message);
+                    throw new Error('Network connection failed. This may be due to browser security restrictions on GitHub Pages. Try running locally or use a proxy server. Error: ' + fetchError.message);
                 }
 
                 if (!response.ok) {
