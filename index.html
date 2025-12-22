@@ -84,6 +84,9 @@
             cursor: pointer;
             transition: all 0.3s ease;
             box-shadow: 0 4px 15px rgba(157, 78, 221, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
         
         .api-key-button:hover {
@@ -91,8 +94,8 @@
             box-shadow: 0 6px 20px rgba(157, 78, 221, 0.5);
         }
         
-        .api-key-button.hidden {
-            display: none;
+        .api-status-icon {
+            font-size: 1.1rem;
         }
         
         .settings-modal {
@@ -492,7 +495,10 @@
 <body>
     <div class="container">
         <header>
-            <button class="api-key-button" id="apiKeyButton" onclick="openApiKeyModal()">🔑 Enter API Key</button>
+            <button class="api-key-button" id="apiKeyButton" onclick="openApiKeyModal()">
+                <span class="api-status-icon" id="apiStatusIcon">❌</span>
+                <span>API Key</span>
+            </button>
             <h1>CineMatch</h1>
             <p class="tagline">AI-Powered Film Curator</p>
         </header>
@@ -589,22 +595,17 @@
             
             if (storedKey) {
                 apiKey = storedKey;
-                hideApiKeyButton();
+                updateApiKeyStatus(true);
                 showChatInterface();
+            } else {
+                updateApiKeyStatus(false);
             }
         };
         
-        function hideApiKeyButton() {
-            const button = document.getElementById('apiKeyButton');
-            if (button) {
-                button.classList.add('hidden');
-            }
-        }
-        
-        function showApiKeyButton() {
-            const button = document.getElementById('apiKeyButton');
-            if (button) {
-                button.classList.remove('hidden');
+        function updateApiKeyStatus(hasKey) {
+            const icon = document.getElementById('apiStatusIcon');
+            if (icon) {
+                icon.textContent = hasKey ? '✅' : '❌';
             }
         }
         
@@ -645,8 +646,8 @@
             localStorage.setItem('claudeApiKey', key);
             input.value = '';
             
-            // Hide the button
-            hideApiKeyButton();
+            // Update status to green check
+            updateApiKeyStatus(true);
             
             // If chat interface not shown yet, show it
             if (document.getElementById('apiSetup').style.display !== 'none') {
@@ -654,7 +655,7 @@
             }
             
             closeApiKeyModal();
-            addMessage('API key saved! You can now start asking for movie recommendations.', true);
+            addMessage('API key saved! ✅ You can now start asking for movie recommendations.', true);
         }
 
         function saveApiKey() {
