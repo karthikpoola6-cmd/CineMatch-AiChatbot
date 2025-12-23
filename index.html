@@ -1,11 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CineMatch - AI Movie Recommendations</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-    <style>
+bplist00—_WebMainResource’	
+^WebResourceURL_WebResourceTextEncodingName_WebResourceData_WebResourceMIMEType_WebResourceFrameName_bhttps://raw.githubusercontent.com/karthikpoola6-cmd/CineMatch-AiChatbot/refs/heads/main/index.htmlUUTF-8OäÑ<html><head><meta name="color-scheme" content="light dark"></head><body><pre style="word-wrap: break-word; white-space: pre-wrap;">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;CineMatch - AI Movie Recommendations&lt;/title&gt;
+    &lt;link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"&gt;
+    &lt;style&gt;
         :root {
             --primary-black: #1a1a2e;
             --secondary-black: #16213e;
@@ -490,106 +491,106 @@
         @keyframes spin {
             to { transform: rotate(360deg); }
         }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <header>
-            <button class="api-key-button" id="apiKeyButton" onclick="openApiKeyModal()">
-                <span class="api-status-icon" id="apiStatusIcon">❌</span>
-                <span>API Key</span>
-            </button>
-            <h1>CineMatch</h1>
-            <p class="tagline">AI-Powered Film Curator</p>
-        </header>
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div class="container"&gt;
+        &lt;header&gt;
+            &lt;button class="api-key-button" id="apiKeyButton" onclick="openApiKeyModal()"&gt;
+                &lt;span class="api-status-icon" id="apiStatusIcon"&gt;‚ùå&lt;/span&gt;
+                &lt;span&gt;API Key&lt;/span&gt;
+            &lt;/button&gt;
+            &lt;h1&gt;CineMatch&lt;/h1&gt;
+            &lt;p class="tagline"&gt;AI-Powered Film Curator&lt;/p&gt;
+        &lt;/header&gt;
         
-        <!-- API Key Modal -->
-        <div class="settings-modal" id="apiKeyModal" onclick="closeApiKeyModalOnOutsideClick(event)">
-            <div class="settings-content" onclick="event.stopPropagation()">
-                <h2 style="color: var(--light-purple); margin-bottom: 1rem;">🔑 API Key Management</h2>
+        &lt;!-- API Key Modal --&gt;
+        &lt;div class="settings-modal" id="apiKeyModal" onclick="closeApiKeyModalOnOutsideClick(event)"&gt;
+            &lt;div class="settings-content" onclick="event.stopPropagation()"&gt;
+                &lt;h2 style="color: var(--light-purple); margin-bottom: 1rem;"&gt;üîë API Key Management&lt;/h2&gt;
                 
-                <div style="padding: 1rem; background: rgba(157, 78, 221, 0.1); border-radius: 8px; margin-bottom: 1rem; text-align: center;">
-                    <span id="modalStatusText" style="color: var(--text-dim);">Status: No key entered</span>
-                </div>
+                &lt;div style="padding: 1rem; background: rgba(157, 78, 221, 0.1); border-radius: 8px; margin-bottom: 1rem; text-align: center;"&gt;
+                    &lt;span id="modalStatusText" style="color: var(--text-dim);"&gt;Status: No key entered&lt;/span&gt;
+                &lt;/div&gt;
                 
-                <div style="margin-bottom: 1rem;">
-                    <label style="color: var(--text-dim); display: block; margin-bottom: 0.5rem;">Claude API Key</label>
-                    <input 
+                &lt;div style="margin-bottom: 1rem;"&gt;
+                    &lt;label style="color: var(--text-dim); display: block; margin-bottom: 0.5rem;"&gt;Claude API Key&lt;/label&gt;
+                    &lt;input 
                         type="password" 
                         id="modalApiKeyInput" 
                         placeholder="sk-ant-api03-..."
                         class="api-input"
                         style="width: 100%; margin-bottom: 0.5rem;"
                         onkeypress="if(event.key === 'Enter') saveApiKeyFromModal()"
-                    >
-                    <p style="color: var(--text-dim); font-size: 0.85rem;">Get your free key at <a href="https://console.anthropic.com/" target="_blank" style="color: var(--gold);">console.anthropic.com</a> ($5 free credit)</p>
-                </div>
+                    &gt;
+                    &lt;p style="color: var(--text-dim); font-size: 0.85rem;"&gt;Get your free key at &lt;a href="https://console.anthropic.com/" target="_blank" style="color: var(--gold);"&gt;console.anthropic.com&lt;/a&gt; ($5 free credit)&lt;/p&gt;
+                &lt;/div&gt;
                 
-                <button onclick="saveApiKeyFromModal()" class="api-button" style="width: 100%; margin-bottom: 0.5rem;">Save & Start</button>
-                <button onclick="removeApiKeyFromModal()" class="api-button" style="width: 100%; background: rgba(255, 107, 107, 0.3); margin-bottom: 0.5rem;">Remove Key</button>
-                <button onclick="closeApiKeyModal()" class="close-button" style="width: 100%;">Cancel</button>
-            </div>
-        </div>
+                &lt;button onclick="saveApiKeyFromModal()" class="api-button" style="width: 100%; margin-bottom: 0.5rem;"&gt;Save &amp; Start&lt;/button&gt;
+                &lt;button onclick="removeApiKeyFromModal()" class="api-button" style="width: 100%; background: rgba(255, 107, 107, 0.3); margin-bottom: 0.5rem;"&gt;Remove Key&lt;/button&gt;
+                &lt;button onclick="closeApiKeyModal()" class="close-button" style="width: 100%;"&gt;Cancel&lt;/button&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
 
-        <!-- API Setup Screen -->
-        <div class="api-setup" id="apiSetup">
-            <div class="api-card">
-                <h2>🔑 Enter Your Claude API Key</h2>
-                <p class="api-description">
-                    Get your free API key at <a href="https://console.anthropic.com/" target="_blank">console.anthropic.com</a> ($5 free credit included)
-                </p>
+        &lt;!-- API Setup Screen --&gt;
+        &lt;div class="api-setup" id="apiSetup"&gt;
+            &lt;div class="api-card"&gt;
+                &lt;h2&gt;üîë Enter Your Claude API Key&lt;/h2&gt;
+                &lt;p class="api-description"&gt;
+                    Get your free API key at &lt;a href="https://console.anthropic.com/" target="_blank"&gt;console.anthropic.com&lt;/a&gt; ($5 free credit included)
+                &lt;/p&gt;
                 
-                <div class="api-input-container">
-                    <input 
+                &lt;div class="api-input-container"&gt;
+                    &lt;input 
                         type="password" 
                         id="apiKeyInput" 
                         placeholder="sk-ant-api03-..."
                         class="api-input"
                         onkeypress="if(event.key === 'Enter') saveApiKey()"
-                    >
-                    <button onclick="saveApiKey()" class="api-button">Start</button>
-                </div>
+                    &gt;
+                    &lt;button onclick="saveApiKey()" class="api-button"&gt;Start&lt;/button&gt;
+                &lt;/div&gt;
                 
-                <p class="api-note">💡 Your key is stored locally in your browser and only sent to Anthropic's API</p>
-            </div>
-        </div>
+                &lt;p class="api-note"&gt;üí° Your key is stored locally in your browser and only sent to Anthropic's API&lt;/p&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
 
-        <!-- Chat Interface (Hidden Initially) -->
-        <div class="chat-container" id="chatContainer" style="display: none;">
-            <div class="mode-indicator" id="modeIndicator">
-                🤖 AI Mode Active - Powered by Claude
-            </div>
+        &lt;!-- Chat Interface (Hidden Initially) --&gt;
+        &lt;div class="chat-container" id="chatContainer" style="display: none;"&gt;
+            &lt;div class="mode-indicator" id="modeIndicator"&gt;
+                ü§ñ AI Mode Active - Powered by Claude
+            &lt;/div&gt;
             
-            <div class="chat-messages" id="chatMessages">
-                <!-- Messages will be added here -->
-            </div>
+            &lt;div class="chat-messages" id="chatMessages"&gt;
+                &lt;!-- Messages will be added here --&gt;
+            &lt;/div&gt;
 
-            <div class="input-container">
-                <input 
+            &lt;div class="input-container"&gt;
+                &lt;input 
                     type="text" 
                     id="userInput" 
                     placeholder="Tell me what you're in the mood for..."
                     onkeypress="if(event.key === 'Enter') sendMessage()"
-                >
-                <button onclick="sendMessage()" id="sendButton">Send</button>
-            </div>
+                &gt;
+                &lt;button onclick="sendMessage()" id="sendButton"&gt;Send&lt;/button&gt;
+            &lt;/div&gt;
 
-            <div class="quick-prompts">
-                <div class="quick-prompt" onclick="useQuickPrompt('Movies like Interstellar')">🚀 Like Interstellar</div>
-                <div class="quick-prompt" onclick="useQuickPrompt('Sci-fi movies after 2007')">🛸 Modern Sci-Fi</div>
-                <div class="quick-prompt" onclick="useQuickPrompt('I want something funny')">😄 Comedy</div>
-                <div class="quick-prompt" onclick="useQuickPrompt('Horror movies')">👻 Horror</div>
-                <div class="quick-prompt" onclick="useQuickPrompt('Romance')">❤️ Romance</div>
-                <div class="quick-prompt" onclick="useQuickPrompt('Action movies')">💥 Action</div>
-            </div>
-        </div>
+            &lt;div class="quick-prompts"&gt;
+                &lt;div class="quick-prompt" onclick="useQuickPrompt('Movies like Interstellar')"&gt;üöÄ Like Interstellar&lt;/div&gt;
+                &lt;div class="quick-prompt" onclick="useQuickPrompt('Sci-fi movies after 2007')"&gt;üõ∏ Modern Sci-Fi&lt;/div&gt;
+                &lt;div class="quick-prompt" onclick="useQuickPrompt('I want something funny')"&gt;üòÑ Comedy&lt;/div&gt;
+                &lt;div class="quick-prompt" onclick="useQuickPrompt('Horror movies')"&gt;üëª Horror&lt;/div&gt;
+                &lt;div class="quick-prompt" onclick="useQuickPrompt('Romance')"&gt;‚ù§Ô∏è Romance&lt;/div&gt;
+                &lt;div class="quick-prompt" onclick="useQuickPrompt('Action movies')"&gt;üí• Action&lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
 
-        <footer id="footer">
+        &lt;footer id="footer"&gt;
             AI-Powered Movie Recommendations | Built with Claude AI
-        </footer>
-    </div>
+        &lt;/footer&gt;
+    &lt;/div&gt;
 
-    <script>
+    &lt;script&gt;
         // Store API key and conversation history
         let apiKey = null;
         let conversationHistory = [];
@@ -617,7 +618,7 @@
         function updateApiKeyStatus(hasKey) {
             const icon = document.getElementById('apiStatusIcon');
             if (icon) {
-                icon.textContent = hasKey ? '✅' : '❌';
+                icon.textContent = hasKey ? '‚úÖ' : '‚ùå';
             }
         }
         
@@ -625,9 +626,9 @@
             const statusText = document.getElementById('modalStatusText');
             if (statusText) {
                 if (apiKey) {
-                    statusText.innerHTML = '<span style="color: var(--gold);">✅ API key is currently saved</span>';
+                    statusText.innerHTML = '&lt;span style="color: var(--gold);"&gt;‚úÖ API key is currently saved&lt;/span&gt;';
                 } else {
-                    statusText.innerHTML = '<span style="color: #ff6b6b;">❌ No API key saved</span>';
+                    statusText.innerHTML = '&lt;span style="color: #ff6b6b;"&gt;‚ùå No API key saved&lt;/span&gt;';
                 }
             }
         }
@@ -689,7 +690,7 @@
             }
             
             closeApiKeyModal();
-            addMessage('API key saved! ✅ You can now start asking for movie recommendations.', true);
+            addMessage('API key saved! ‚úÖ You can now start asking for movie recommendations.', true);
         }
 
         function saveApiKey() {
@@ -721,25 +722,25 @@
             messageDiv.className = `message ${isBot ? 'bot' : 'user'}`;
             
             let content = `
-                <div class="message-label">${isBot ? '🎬 CineMatch AI' : '👤 You'}</div>
-                <div class="message-content">
+                &lt;div class="message-label"&gt;${isBot ? 'üé¨ CineMatch AI' : 'üë§ You'}&lt;/div&gt;
+                &lt;div class="message-content"&gt;
                     ${text}
             `;
             
-            if (movies && movies.length > 0) {
-                movies.forEach(movie => {
-                    const displayYear = movie.year ? ` • ${movie.year}` : '';
+            if (movies &amp;&amp; movies.length &gt; 0) {
+                movies.forEach(movie =&gt; {
+                    const displayYear = movie.year ? ` ‚Ä¢ ${movie.year}` : '';
                     content += `
-                        <div class="movie-card">
-                            <div class="movie-title">${movie.title}</div>
-                            <div class="movie-genre">${movie.genre}${displayYear}</div>
-                            <div style="margin-top: 0.5rem; color: var(--text-light);">${movie.reason}</div>
-                        </div>
+                        &lt;div class="movie-card"&gt;
+                            &lt;div class="movie-title"&gt;${movie.title}&lt;/div&gt;
+                            &lt;div class="movie-genre"&gt;${movie.genre}${displayYear}&lt;/div&gt;
+                            &lt;div style="margin-top: 0.5rem; color: var(--text-light);"&gt;${movie.reason}&lt;/div&gt;
+                        &lt;/div&gt;
                     `;
                 });
             }
             
-            content += `</div>`;
+            content += `&lt;/div&gt;`;
             messageDiv.innerHTML = content;
             messagesDiv.appendChild(messageDiv);
             messagesDiv.scrollTop = messagesDiv.scrollHeight;
@@ -757,7 +758,7 @@
             // Disable send button while processing
             const sendButton = document.getElementById('sendButton');
             sendButton.disabled = true;
-            sendButton.innerHTML = '<span class="loading"></span>';
+            sendButton.innerHTML = '&lt;span class="loading"&gt;&lt;/span&gt;';
             
             await getAIResponse(message);
         }
@@ -768,7 +769,7 @@
             try {
                 // Check if we have an API key
                 if (!apiKey) {
-                    throw new Error('No API key found. Please click the "❌ API Key" button in the top right to enter your key.');
+                    throw new Error('No API key found. Please click the "‚ùå API Key" button in the top right to enter your key.');
                 }
                 
                 // Validate API key format
@@ -785,7 +786,7 @@
                 });
 
                 // Keep only last 6 messages (3 exchanges) to avoid token limit issues
-                if (conversationHistory.length > 6) {
+                if (conversationHistory.length &gt; 6) {
                     conversationHistory = conversationHistory.slice(-6);
                 }
 
@@ -838,14 +839,13 @@ Be conversational and enthusiastic. Keep the intro text brief, then provide the 
 
                 let response;
                 try {
-                    response = await fetch('https://api.anthropic.com/v1/messages', {
+                    response = await fetch('https://cinematch-backend-ten.vercel.app/api/claude', {
                         method: 'POST',
                         mode: 'cors',
                         headers: {
                             'Content-Type': 'application/json',
                             'x-api-key': apiKey,
-                            'anthropic-version': '2023-06-01',
-                            'anthropic-dangerous-direct-browser-access': 'true'
+                            
                         },
                         body: JSON.stringify(requestBody)
                     });
@@ -961,15 +961,17 @@ Be conversational and enthusiastic. Keep the intro text brief, then provide the 
             let cleanText = aiText.replace(/\[MOVIE\][\s\S]*?\[\/MOVIE\]/g, '').trim();
             
             // If no clean text remains but we have movies, provide a default message
-            if (!cleanText && movies.length > 0) {
+            if (!cleanText &amp;&amp; movies.length &gt; 0) {
                 cleanText = "Here are some great recommendations for you:";
             }
 
             return {
                 text: cleanText || aiText,
-                movies: movies.length > 0 ? movies : null
+                movies: movies.length &gt; 0 ? movies : null
             };
         }
-    </script>
-</body>
-</html>
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre></body></html>Ztext/plainP    ( 7 U g } î ˘ ˇãáãí             
+              ãì
